@@ -1,0 +1,267 @@
+<?xml version="1.0"?>
+<OpenCPE version="1">
+    <interfaces>
+        <interface instance='1'>
+            <name>loopback</name>
+            <description>LAN Interface</description>
+            <type>softwareLoopback</type>
+            <enabled>false</enabled>
+            <link-up-down-trap-enable>enabled</link-up-down-trap-enable>
+            <ipv4>
+                <enabled>true</enabled>
+                <forwarding>false</forwarding>
+                <mtu>1500</mtu>
+                <address instance='1'>
+                    <ip>127.0.0.1</ip>
+                    <prefix-length>8</prefix-length>
+                </address>
+            </ipv4>
+            <ipv6>
+                <enabled>false</enabled>
+                <forwarding>false</forwarding>
+                <mtu>1500</mtu>
+            </ipv6>
+        </interface>
+        <interface instance='2'>
+            <name>lan</name>
+            <description>LAN Interface</description>
+            <type>ethernetCsmacd</type>
+            <enabled>true</enabled>
+            <link-up-down-trap-enable>enabled</link-up-down-trap-enable>
+            <ipv4>
+                <enabled>true</enabled>
+                <forwarding>false</forwarding>
+                <mtu>1500</mtu>
+                <address instance='1'>
+                    <ip>192.168.1.1</ip>
+                    <prefix-length>24</prefix-length>
+                </address>
+            </ipv4>
+            <ipv6>
+                <enabled>true</enabled>
+                <forwarding>false</forwarding>
+                <mtu>1500</mtu>
+                <address instance='1'>
+                    <ip>1::1</ip>
+                    <prefix-length>64</prefix-length>
+                </address>
+                <dup-addr-detect-transmits>0</dup-addr-detect-transmits>
+                <autoconf>
+                    <create-global-addresses>false</create-global-addresses>
+                    <create-temporary-addresses>false</create-temporary-addresses>
+                    <temporary-valid-lifetime>0</temporary-valid-lifetime>
+                    <temporary-preferred-lifetime>0</temporary-preferred-lifetime>
+                </autoconf>
+            </ipv6>
+        </interface>
+        <interface instance='3'>
+            <name>wan</name>
+            <description>WAN Interface</description>
+            <type>ethernetCsmacd</type>
+            <enabled>false</enabled>
+            <link-up-down-trap-enable>enabled</link-up-down-trap-enable>
+            <ipv4>
+                <enabled>false</enabled>
+                <forwarding>false</forwarding>
+                <mtu>1400</mtu>
+                <address instance='1'>
+                    <ip>192.168.13.199</ip>
+                    <prefix-length>24</prefix-length>
+                </address>
+            </ipv4>
+            <ipv6>
+                <enabled>false</enabled>
+                <forwarding>false</forwarding>
+                <mtu>1400</mtu>
+                <address instance='1'>
+                    <ip>1::</ip>
+                    <prefix-length>64</prefix-length>
+                </address>
+                <dup-addr-detect-transmits>0</dup-addr-detect-transmits>
+                <autoconf>
+                    <create-global-addresses>false</create-global-addresses>
+                    <create-temporary-addresses>false</create-temporary-addresses>
+                    <temporary-valid-lifetime>0</temporary-valid-lifetime>
+                    <temporary-preferred-lifetime>0</temporary-preferred-lifetime>
+                </autoconf>
+            </ipv6>
+        </interface>
+        <interface instance='4'>
+            <name>iptv</name>
+            <description>IPTV Interface</description>
+            <type>ethernetCsmacd</type>
+            <enabled>false</enabled>
+            <link-up-down-trap-enable>enabled</link-up-down-trap-enable>
+            <ipv4>
+                <enabled>false</enabled>
+                <forwarding>false</forwarding>
+                <mtu>1400</mtu>
+                <address instance='1'>
+                    <ip>1.0.0.0</ip>
+                    <prefix-length>24</prefix-length>
+                </address>
+            </ipv4>
+            <ipv6>
+                <enabled>false</enabled>
+                <forwarding>false</forwarding>
+                <mtu>1400</mtu>
+                <address instance='1'>
+                    <ip>1::</ip>
+                    <prefix-length>64</prefix-length>
+                </address>
+                <dup-addr-detect-transmits>0</dup-addr-detect-transmits>
+                <autoconf>
+                    <create-global-addresses>false</create-global-addresses>
+                    <create-temporary-addresses>false</create-temporary-addresses>
+                    <temporary-valid-lifetime>0</temporary-valid-lifetime>
+                    <temporary-preferred-lifetime>0</temporary-preferred-lifetime>
+                </autoconf>
+            </ipv6>
+        </interface>
+    </interfaces>
+    <interfaces-state>
+        <interface instance="1">
+            <name>loopback</name>
+            <type>softwareLoopback</type>
+            <if-index>1</if-index>
+        </interface>
+        <interface instance="2">
+            <name>eth0</name>
+            <type>ethernetCsmacd</type>
+            <if-index>2</if-index>
+            <higher-layer-if instance='1'>
+                <higher-layer-if>interfaces-state.interface.5</higher-layer-if>
+            </higher-layer-if>
+        </interface>
+        <interface instance="3">
+            <name>wlan0</name>
+            <type>ieee80211</type>
+            <if-index>3</if-index>
+            <higher-layer-if instance='1'>
+                <higher-layer-if>interfaces-state.interface.5</higher-layer-if>
+            </higher-layer-if>
+        </interface>
+        <interface instance="4">
+            <name>wlan1</name>
+            <type>ieee80211</type>
+            <if-index>4</if-index>
+            <higher-layer-if instance='1'>
+                <higher-layer-if>interfaces-state.interface.5</higher-layer-if>
+            </higher-layer-if>
+        </interface>
+        <interface instance="5">
+            <name>lan</name>
+            <type>ethernetCsmacd</type>
+            <if-index>5</if-index>
+            <lower-layer-if instance='1'>
+                <lower-layer-if>interfaces-state.interface.2</lower-layer-if>
+            </lower-layer-if>
+            <lower-layer-if instance='2'>
+                <lower-layer-if>interfaces-state.interface.3</lower-layer-if>
+            </lower-layer-if>
+            <lower-layer-if instance='3'>
+                <lower-layer-if>interfaces-state.interface.4</lower-layer-if>
+            </lower-layer-if>
+         </interface>
+        <interface instance="6">
+            <name>wan</name>
+            <type>ethernetCsmacd</type>
+            <if-index>6</if-index>
+        </interface>
+    </interfaces-state>
+    <system>
+        <hostname>CPE004</hostname>
+        <clock>
+            <timezone-location>Europe/Berlin</timezone-location>
+            <timezone-utc-offset>1</timezone-utc-offset>
+        </clock>
+        <ntp>
+            <server instance="1">
+                <name>Server #1</name>
+                <udp>
+                    <address>2.de.pool.ntp.org</address>
+                    <port>0</port>
+                </udp>
+            </server>
+        </ntp>
+        <dns-resolver>
+            <server instance='1'>
+                <name>DNS #1</name>
+                <udp-and-tcp>
+                    <address>2001:4860:4860::8888</address>
+                    <port>0</port>
+                </udp-and-tcp>
+            </server>
+            <options>
+                <timeout>1</timeout>
+                <attempts>1</attempts>
+            </options>
+        </dns-resolver>
+        <authentication>
+            <user-authentication-order instance='1'>
+                <user-authentication-order>local-users</user-authentication-order>
+            </user-authentication-order>
+            <user instance='1'>
+                <name>netconfd</name>
+                <password>$0$123456</password>
+                <ssh-key instance='1'>
+                    <name>netconfd@ncs.dev.tpip.net</name>
+                    <algorithm>ssh-dss</algorithm>
+                    <key-data >
+                        AAAAB3NzaC1kc3MAAACBAP7DUMXPqLL5yBd6ANLui1RsRV0fl+WjAra4R4lLdu5f
+                        lislM8us3pm2n6ja0W0WnlLXDNDyPV2prCfO1QxkTvxzIXFpJDDXbdppQ8GpFH35
+                        oZxGAC/Dc2dyukrkXClhMNiRbGLNOkldLm93pHDUNfdCslNWwz/MIrxGdf/c9lH9
+                        AAAAFQDSSRCmCUb1Cf9GiwNcFm6KrZO9RwAAAIAy8/YcCwbwYG9XNmeyJj0Yw37N
+                        jo78qPRrMgJI1eI2kF4CazrWo8JzLUVxstL0s+A5m/pKhmHrAerpV5V55TCFJeWT
+                        qQW9zaBu5v2LWHw/wazcp7dhvz18M21rjh4WlQkl/HEqTD3M27vBQ4pth6tuGSZG
+                        si+vySuKRqxH77RvwgAAAIAmfZd0K+IJR6hvx7o8qF/ilWLj2wZVin1n3KN6sowB
+                        afYBTjEKe7BJimW/UzzgsEPgE7gEkLIQdpLZKrWtKb2u5jN26RA2+fwUL8DLrpjd
+                        Z99CWxZmKe2KEsoq2VDfPnp4kVINZ9X0hdS+3hIE1FxZ0VV6OMxLPtLpb2A8FOBg
+                        HQ==
+                    </key-data>
+                </ssh-key>
+            </user>
+            <user instance='2'>
+                <name>root</name>
+                <password>$0$123456</password>
+                <ssh-key instance='1'>
+                    <name>aschultz@internet</name>
+                    <algorithm>ssh-rsa</algorithm>
+                    <key-data >
+                        AAAAB3NzaC1yc2EAAAABIwAAAQEAyZkZpJwajty0Xp1fnvl57Uj6MXlFA8ShKo2W
+                        HDyIzd9mS3yENCi9sl5LkJwS82jA+LjUh3qFgpp16FgVpudBezJ89T30OCL0o7OK
+                        N2ITxW3JSv9D0UhV9Zb0MZrVped0LEbCraHbu9JxSEikyNEf7ZPykO7g9rp1UL92
+                        tJEinilW+CijBAtK9lYWzAYzHVJp0HImlAJnakPfzcqvumKLTGkE5oUc+sV2Dfxk
+                        avA8oMo1fBuGYQ9U0r5lX58VE5j5iKx/+m4IbUMx6RUbm4SE8BTcj4aYsoEy2+Dx
+                        DRDoeOFzNAW6YfS5phuN0IZV5nfjJWJ6pcR/H+ajn2LJ/CCbEw==
+                    </key-data>
+                </ssh-key>
+                <ssh-key instance='2'>
+                    <name>aschultz@internet-ecdsa</name>
+                    <algorithm>ecdsa-sha2-nistp521</algorithm>
+                    <key-data >
+                        AAAAE2VjZHNhLXNoYTItbmlzdHA1MjEAAAAIbmlzdHA1MjEAAACFBACkML/R/lz7
+                        Z7by5/ByTDa6in6HvZ6FsDku7ooGoVFqzWMOou/QbTHRXCTfcz9HFcQlzI33zp5V
+                        /MuNXAirEYL6nwFmikJxvzcewbrylIpWJdqXNuLgdZyvMQHIvnHBa4D8YuC1c+45
+                        yt5yppGwZl0UlvEOWQcDOi0OoUjZeTbgQQMrOw==
+                    </key-data>
+                </ssh-key>
+            </user>
+        </authentication>
+        <radius>
+            <options>
+                <timeout>1</timeout>
+                <attempts>1</attempts>
+            </options>
+        </radius>
+    </system>
+    <system-state>
+        <platform>
+            <os-name>%D</os-name>
+            <os-release>%C</os-release>
+            <os-version>%V</os-version>
+            <machine>%S</machine>
+            <firmware-version>%N</firmware-version>
+        </platform>
+    </system-state>
+</OpenCPE>

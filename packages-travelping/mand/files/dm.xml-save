@@ -1,0 +1,81 @@
+<?xml version="1.0"?>
+<OpenCPE version="1">
+    <interfaces>
+        <interface instance='1'>
+            <name>br-lan</name>
+            <description />
+            <type>ianaift:ethernetCsmacd</type>
+            <enabled>false</enabled>
+            <link-up-down-trap-enable>enabled</link-up-down-trap-enable>
+            <ipv4>
+                <enabled>false</enabled>
+                <forwarding>false</forwarding>
+                <mtu>1400</mtu>
+                <address instance='1'>
+                    <ip>1.0.0.0</ip>
+                    <prefix-length>24</prefix-length>
+					<netmask>255.255.255.0</netmask>
+                </address>
+                <neighbor instance='1'>
+                    <ip>1.0.0.0</ip>
+                    <link-layer-address>00:11:22:33:44:55</link-layer-address>
+                </neighbor>
+            </ipv4>
+            <ipv6>
+                <enabled>false</enabled>
+                <forwarding>false</forwarding>
+                <mtu>1400</mtu>
+                <address instance='1'>
+                    <ip>1::</ip>
+                    <prefix-length>64</prefix-length>
+                </address>
+                <neighbor instance='1'>
+                    <ip>1::</ip>
+                    <link-layer-address>00:11:22:33:44:55</link-layer-address>
+                </neighbor>
+                <dup-addr-detect-transmits>0</dup-addr-detect-transmits>
+                <autoconf>
+                    <create-global-addresses>false</create-global-addresses>
+                    <create-temporary-addresses>false</create-temporary-addresses>
+                    <temporary-valid-lifetime>0</temporary-valid-lifetime>
+                    <temporary-preferred-lifetime>0</temporary-preferred-lifetime>
+                </autoconf>
+            </ipv6>
+        </interface>
+    </interfaces>
+    <system>
+        <hostname>CPE004</hostname>
+        <clock>
+            <timezone-location>Europe/Berlin</timezone-location>
+            <timezone-utc-offset>1</timezone-utc-offset>
+        </clock>
+        <ntp>
+            <server instance="1">
+                <name>Server #1</name>
+                <udp>
+                    <address>0.de.pool.ntp.org</address>
+                    <port>0</port>
+                </udp>
+            </server>
+        </ntp>
+        <dns-resolver>
+            <server instance='1'>
+                <name>DNS #1</name>
+                <udp-and-tcp>
+                    <address>8.8.8.8</address>
+                    <port>0</port>
+                </udp-and-tcp>
+            </server>
+            <options>
+                <timeout>1</timeout>
+                <attempts>1</attempts>
+            </options>
+        </dns-resolver>
+        <radius>
+            <options>
+                <timeout>1</timeout>
+                <attempts>1</attempts>
+            </options>
+        </radius>
+    </system>
+</OpenCPE>
