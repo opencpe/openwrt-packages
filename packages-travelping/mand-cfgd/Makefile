@@ -13,7 +13,7 @@ PKG_REV:=e46d4f1e31af172b804f538bbadcb2a05ec1c163
 PKG_RELEASE:=2
 
 PKG_SOURCE:=mand-cfgd-$(PKG_REV).tar.gz
-PKG_SOURCE_URL:=git@github.com:travelping/mand-cfgd.git
+PKG_SOURCE_URL:=git://github.com/opencpe/mand-cfgd
 PKG_SOURCE_PROTO:=git
 PKG_SOURCE_SUBDIR:=$(PKG_NAME)-$(PKG_VERSION)
 PKG_SOURCE_VERSION:=$(PKG_REV)

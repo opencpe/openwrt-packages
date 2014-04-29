@@ -13,7 +13,7 @@ PKG_REV:=3555ae572ac9a49a40da6134b8468291ed2ec402
 PKG_RELEASE:=2
 
 PKG_SOURCE:=mand-$(PKG_REV).tar.gz
-PKG_SOURCE_URL:=git://github.com/travelping/mand
+PKG_SOURCE_URL:=git://github.com/opencpe/mand
 PKG_SOURCE_PROTO:=git
 PKG_SOURCE_SUBDIR:=$(PKG_NAME)-$(PKG_VERSION)
 PKG_SOURCE_VERSION:=$(PKG_REV)
