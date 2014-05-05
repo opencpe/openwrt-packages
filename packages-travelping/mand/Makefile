@@ -8,9 +8,9 @@ include $(TOPDIR)/rules.mk
 include $(INCLUDE_DIR)/version.mk
 
 PKG_NAME:=mand
-PKG_VERSION:=2014-04-29
-PKG_REV:=3555ae572ac9a49a40da6134b8468291ed2ec402
-PKG_RELEASE:=2
+PKG_VERSION:=2014-04-30
+PKG_REV:=27ec8f84a7b336dee10a03d118db0d5ab9569b3b
+PKG_RELEASE:=1
 
 PKG_SOURCE:=mand-$(PKG_REV).tar.gz
 PKG_SOURCE_URL:=git://github.com/opencpe/mand
