@@ -13,7 +13,7 @@ PKG_RELEASE:=1
 
 PKG_SOURCE:=$(PKG_NAME)-$(PKG_VERSION).tar.gz
 PKG_SOURCE_URL:=http://www.samba.org/ftp/talloc/
-PKG_MD5SUM:=95380bd4081f85ef08c5209f4107e9f8
+PKG_MD5SUM:=85a69bfb5808fcadf378bd9eadb1f9c2
 
 PKG_INSTALL:=1
 
