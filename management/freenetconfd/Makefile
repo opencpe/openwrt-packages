@@ -28,7 +28,7 @@ define Package/freenetconfd
   CATEGORY:=Utilities
   TITLE:=netconf server
   URL:=http://www.freenetconf.org/
-  DEPENDS:=+libuci +libubox +libubus +libssh +libroxml +mand
+  DEPENDS:=+libuci +libubox +libubus +libssh +libroxml +mand +libev +libtalloc
   MAINTAINER:=Luka Perkov <luka@openwrt.org>
 endef
 
