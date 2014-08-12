@@ -12,7 +12,7 @@ PKG_VERSION:=2014-04-30
 PKG_RELEASE=1
 
 PKG_SOURCE_PROTO:=git
-PKG_SOURCE_URL:=git@github.com:opencpe/freenetconfd.git
+PKG_SOURCE_URL:=https://github.com/opencpe/freenetconfd.git
 PKG_SOURCE_SUBDIR:=$(PKG_NAME)-$(PKG_VERSION)
 PKG_SOURCE_VERSION:=bb4eb6196ea330008ca1d8f34130ef996d4ae1a0
 PKG_SOURCE:=$(PKG_NAME)-$(PKG_VERSION)-$(PKG_SOURCE_VERSION).tar.gz
@@ -28,7 +28,7 @@ define Package/freenetconfd
   CATEGORY:=Utilities
   TITLE:=netconf server
   URL:=http://www.freenetconf.org/
-  DEPENDS:=+libuci +libubox +libubus +libssh +libroxml +mand
+  DEPENDS:=+libuci +libubox +libubus +libssh +libroxml +mand +libev +libtalloc
   MAINTAINER:=Luka Perkov <luka@openwrt.org>
 endef
 
