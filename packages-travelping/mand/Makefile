@@ -18,14 +18,16 @@ PKG_SOURCE_PROTO:=git
 PKG_SOURCE_SUBDIR:=$(PKG_NAME)-$(PKG_VERSION)
 PKG_SOURCE_VERSION:=$(PKG_REV)
 
+PKG_BUILD_DEPENDS:=luac/host
+
 PKG_FIXUP:=autoreconf
 PKG_INSTALL:=1
 
 include $(INCLUDE_DIR)/package.mk
 
 define Package/mand
-  SECTION:=travelping
-  CATEGORY:=Travelping
+  SECTION:=utils
+  CATEGORY:=Utilities
   TITLE:=mand
   DEPENDS:=+liblua +libev +libtalloc +libexpat +librt +libpthread +libopenssl +zlib
 endef

@@ -24,10 +24,10 @@ PKG_INSTALL:=1
 include $(INCLUDE_DIR)/package.mk
 
 define Package/mand-cfgd
-  SECTION:=travelping
-  CATEGORY:=Travelping
+  SECTION:=utils
+  CATEGORY:=Utilities
   TITLE:=mand-cfgd
-  DEPENDS:=+mand +ip +libnl
+  DEPENDS:=+mand +ip +libnl +libtalloc
 endef
 
 define Package/mand-cfgd/description
