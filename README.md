@@ -15,16 +15,69 @@ upgrade support.
 Building NETCONF support
 ------------------------
 
-1. add the [OpenCPE package feed][1] to your OpenWRT build root
-2. enable freenetconfd, mand and mand-cfg
-3. build OpenWRT as usual
+### Software needed on the Host system
+
+1. xsltproc: should be available as package on all major linux distributions
+2. pyang: [download][1] and install it with `python setup.py install`
+
+### Install Feed
+
+* Add [OpenCPE package feed][2] to `feeds.conf.default`, like:
+
+```
+src-git opencpe https://github.com/opencpe/openwrt-packages.git
+```
+
+* Disable OpenWrt's `management` feed in `feeds.conf.default`, like:
+
+```
+# disable openwrt management feed
+#src-git management https://github.com/openwrt-management/packages.git
+```
+
+### Install all Packages
+
+* Install all OpenCPE Packages:
+
+```
+% ./scripts/feeds install -a -p opencpe
+```
+
+`opencpe` is the alias in `feeds.conf.default`.
+
+* `libexpat` is needed as a dependency. Installed it from OpenWrt's `packages`
+feed:
+
+```
+% ./scripts/feeds install -p packages libexpat
+```
+
+### Configure OpenWrt Buildroot
+
+* To select all packages from OpenCPE, run:
+```
+    % make menuconfig
+```
+* Now select all packages, namely:
+  1. `Utilities -> mand`
+  2. `Utilities -> mand-cfgd`
+  3. `Utilities -> freenetconfd`
+* same of this packages maybe already selected.
+
+### Build OpenWrt
+
+Build OpenWrt as usual, like:
+
+```
+% make
+```
 
 Using NETCONF support
 ---------------------
 
 Setup and operation of a NETCONF server is out of the scope of this guide. It is
 expected that you have a running NETCONF server that supports the
-[OpenCPE YANG models][2]
+[OpenCPE YANG models][3]
 
 If your OpenWRT was installed without the NETCONF packages, install and enable
 freenetconfd, mand and mand-cfg:
@@ -96,6 +149,7 @@ and:
             <higher-layer-if>interfaces-state.interface.5</higher-layer-if>
         </higher-layer-if>
     </interface>
-
-[1]: https://github.com/opencpe/openwrt-packages
-[2]: https://github.com/opencpe/yang
+ 
+[1]: https://code.google.com/p/pyang/
+[2]: https://github.com/opencpe/openwrt-packages.git
+[3]: https://github.com/opencpe/yang
