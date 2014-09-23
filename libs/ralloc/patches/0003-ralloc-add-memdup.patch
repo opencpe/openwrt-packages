@@ -1,0 +1,53 @@
+From 786d3b4ac4951516ba10738a1725adb3c840548b Mon Sep 17 00:00:00 2001
+From: Jonas Gorski <jogo@openwrt.org>
+Date: Wed, 24 Sep 2014 16:21:38 +0200
+Subject: [PATCH 3/3] ralloc: add memdup
+
+---
+ src/util/ralloc.c | 13 +++++++++++++
+ src/util/ralloc.h |  5 +++++
+ 2 files changed, 18 insertions(+)
+
+diff --git a/src/util/ralloc.c b/src/util/ralloc.c
+index aabe312..d7303a8 100644
+--- a/src/util/ralloc.c
++++ b/src/util/ralloc.c
+@@ -310,6 +310,19 @@ ralloc_set_destructor(const void *ptr, void(*destructor)(void *))
+    info->destructor = destructor;
+ }
+ 
++void *
++ralloc_memdup(const void *ctx, const void *ptr, size_t size)
++{
++   char *mem;
++
++   if (unlikely(ptr == NULL))
++      return NULL;
++
++   mem = ralloc_size(ctx, size);
++   memcpy(mem, ptr, size);
++   return mem;
++}
++
+ char *
+ ralloc_strdup(const void *ctx, const char *str)
+ {
+diff --git a/src/util/ralloc.h b/src/util/ralloc.h
+index 279213d..dea2e2a 100644
+--- a/src/util/ralloc.h
++++ b/src/util/ralloc.h
+@@ -269,6 +269,11 @@ void ralloc_set_destructor(const void *ptr, void(*destructor)(void *));
+ 
+ /// \defgroup array String Functions @{
+ /**
++ * Duplicate memory, allocating the memory from the given context.
++ */
++void *ralloc_memdup(const void *ctx, const void *ptr, size_t size);
++
++/**
+  * Duplicate a string, allocating the memory from the given context.
+  */
+ char *ralloc_strdup(const void *ctx, const char *str);
+-- 
+2.0.1
+
