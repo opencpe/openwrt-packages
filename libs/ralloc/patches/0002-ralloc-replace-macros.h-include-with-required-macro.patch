@@ -1,0 +1,40 @@
+From 1818c7aefb73bc51e1f2dd7c5c17ce490817ccc1 Mon Sep 17 00:00:00 2001
+From: Jonas Gorski <jogo@openwrt.org>
+Date: Wed, 24 Sep 2014 16:17:00 +0200
+Subject: [PATCH 2/3] ralloc: replace macros.h include with required macro
+
+Allow it to be exported.
+---
+ src/util/ralloc.h | 16 +++++++++++++++-
+ 1 file changed, 15 insertions(+), 1 deletion(-)
+
+diff --git a/src/util/ralloc.h b/src/util/ralloc.h
+index 4b88f32..279213d 100644
+--- a/src/util/ralloc.h
++++ b/src/util/ralloc.h
+@@ -54,7 +54,21 @@ extern "C" {
+ #include <stdarg.h>
+ #include <stdbool.h>
+ 
+-#include "macros.h"
++#if (__GNUC__ >= 3)
++#define PRINTFLIKE(f, a) __attribute__ ((format(__printf__, f, a)))
++#else
++#define PRINTFLIKE(f, a)
++#endif
++
++#ifndef likely
++#  ifdef __GNUC__
++#    define likely(x)   __builtin_expect(!!(x), 1)
++#    define unlikely(x) __builtin_expect(!!(x), 0)
++#  else
++#    define likely(x)   (x)
++#    define unlikely(x) (x)
++#  endif
++#endif
+ 
+ /**
+  * \def ralloc(ctx, type)
+-- 
+2.0.1
+
